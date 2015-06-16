@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var home = require("../handler/home");
+var user = require("../handler/user");
 
 
 
@@ -12,6 +13,9 @@ var home = require("../handler/home");
 
 /* GET home page. */
 router.get('/', home.showHome);
-router.post('/upload', home.upload)
+router.post('/upload', home.upload);
+router.post('/user/signup', user.signup);
+router.get('/user/signupDone', user.signupDone);
+
 
 module.exports = router;

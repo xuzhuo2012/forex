@@ -3,8 +3,8 @@
   -*- coding:utf-8 -*-
 
  */
-formidable = require("formidable");
-fs = require("fs");
+var formidable = require("formidable");
+var fs = require("fs");
 
 
 /**
@@ -33,11 +33,11 @@ exports.upload = function(req, res, next) {
         console.log(files.upload.path);
       //   fs.rename(files.upload.path, "../upload/test.xlsx", function(){
       //   	res.writeHead(200, {"Content-Type": "text/html"});
-		    // res.write("received sucessfully:<br/>");
+		    // res.write("received successfully:<br/>");
 		    // res.end();
       //   });
 		res.writeHead(200, {"Content-Type": "text/html"});
-		res.write("received sucessfully!!!");
+		res.write("received successfully!!!");
 		res.end();	
     });
 };
