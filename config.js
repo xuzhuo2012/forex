@@ -7,8 +7,12 @@
  * init config info
  * @return {object} config-info object
  */
-function initConfig() {
-    var configInfo = {
+exports.appConfig = {
+    mongodbConfig : {
+        dbURL : 'mongodb://localhost/forex'
+    },
+
+    configInfo : {
 
         //mysql max connections
         default_max_conns : 50,
@@ -49,10 +53,7 @@ function initConfig() {
             ENUM_SERVER     : "SERVER",
             ENUM_VE         : "VIRTUALEQUIPMENT"
         }
-    };
+    }
 
-    return configInfo;
+    //return configInfo;
 }
-
-//exports
-exports.initConfig = initConfig;

@@ -3,41 +3,46 @@
   -*- coding:utf-8 -*-
 
  */
-var formidable = require("formidable");
+
 var fs = require("fs");
 
+var mongoose = require('mongoose');
+var TransactionGroup = mongoose.model('TransactionGroup');
+
+exports.showPage = function(req, res, next) {
+    console.log("Request handler 'showPage' was called.");
+    res.render("pages/"+req.params[0], {
+        title: '汇自在 --- 外汇统计，复盘'
+    });
+};
 
 /**
  * show login page
  * @param  {object}   req  the request object
  * @param  {object}   res  the response object
  * @param  {Function} next the next handler
- * @return {null}        
+ * @return {null}
  */
 
 exports.showHome = function(req, res, next) {
     console.log("Request handler 'showHome' was called.");
-    res.render("home", {
+    res.render("pages/home", {
         title: '汇自在 --- 外汇统计，复盘'
     });
 };
 
 exports.upload = function(req, res, next) {
     console.log("Request handler 'upload' was called.");
+    var _tg = JSON.parse(req.body.tg);
+    console.log(_tg.fileName);
+    var tg = new TransactionGroup(_tg);
 
-    var form = new formidable.IncomingForm();
-    form.uploadDir = "../upload";
-    console.log("about to parse");
-    form.parse(req, function(error, fields, files) {
-        console.log("parsing done");
-        console.log(files.upload.path);
-      //   fs.rename(files.upload.path, "../upload/test.xlsx", function(){
-      //   	res.writeHead(200, {"Content-Type": "text/html"});
-		    // res.write("received successfully:<br/>");
-		    // res.end();
-      //   });
-		res.writeHead(200, {"Content-Type": "text/html"});
-		res.write("received successfully!!!");
-		res.end();	
-    });
+    tg.save(function(err) {
+        console.log('enter save');
+        if (err) {
+            console.log(err)
+        }
+
+        res.redirect('/pages/home');
+    })
 };

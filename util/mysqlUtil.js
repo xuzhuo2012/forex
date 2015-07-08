@@ -6,14 +6,14 @@
 
 var mysql     = require("mysql");
 var mysqlPool = null;
-var config    = require("../config").initConfig();
+var config    = require("../config").appConfig;
 
 /**
  * init mysql pool
  * @return {null} 
  */
 function initMysqlPool () {
-    mysqlPool = mysql.createPool(config.mysqlConfig);
+    mysqlPool = mysql.createPool(config.configInfo.mysqlConfig);
 }
 
 /**

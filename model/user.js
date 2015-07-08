@@ -4,7 +4,7 @@ var sqlQuery = require("../script/sql");
 
 exports.findUserByName = function(username, callback) {
 
-}
+};
 exports.userExist = function(username, callback) {
 	console.log(sqlQuery.userExist);
 	client.query({
@@ -25,7 +25,7 @@ exports.userExist = function(username, callback) {
             callback(null,false);
         }
 	});
-}
+};
 
 exports.addUser = function(user, callback) {
 	console.log(sqlQuery.addUser);
@@ -36,7 +36,7 @@ exports.addUser = function(user, callback) {
 			PassWord : user.password
 		}
 	},callback);
-}
+};
 exports.editPassword = function(user, callback) {
 
-}
+};

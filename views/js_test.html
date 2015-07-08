@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<!-- xlsx.js (C) 2013-2015 SheetJS http://sheetjs.com -->
+<!-- vim: set ts=2: -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>JS Live Demo</title>
+    <script src="./libs/jquery/dist/jquery.min.js"></script>
+    <style>
+        #drop{
+            border:2px dashed #bbb;
+            -moz-border-radius:5px;
+            -webkit-border-radius:5px;
+            border-radius:5px;
+            padding:25px;
+            text-align:center;
+            font:20pt bold,"Vollkorn";color:#bbb
+        }
+        #b64data{
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+
+
+<input id="lefile" type="file" style="display:none">
+<div class="input-append">
+    <input id="photoCover" class="input-large" type="text">
+    <a class="btn" onclick="$('input[id=lefile]').click();">Browse</a>
+</div>
+
+<script type="text/javascript">
+    $('input[id=lefile]').change(function() {
+        $('#photoCover').val($(this).val());
+    });
+</script>
+<script >
+
+    var date1 = new Date('12/3/14 2:43 PM ');   // todo figure out how to get this right
+    var n = 12345;
+    alert(n.toPrecision(3));
+
+//    alert(date1.toString());
+//    alert('12/3/14 2:43 上午        '.trim())
+
+//    alert(test.name);
+</script>
+</body>
+</html>

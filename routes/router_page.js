@@ -12,10 +12,14 @@ var user = require("../handler/user");
 
 
 /* GET home page. */
-router.get('/', home.showHome);
+
 router.post('/upload', home.upload);
 router.post('/user/signup', user.signup);
 router.get('/user/signupDone', user.signupDone);
 
+router.get('/pages/*', home.showPage);
+router.post('/TG', home.upload);
+
+//router.get('/service/*', service.)
 
 module.exports = router;
