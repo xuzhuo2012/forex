@@ -128,12 +128,13 @@ function handleFile(e) {
 function submit() {
     var form = document.getElementById('newTGForm');
 
-    var params = document.createElement("input");
-    params.name = 'tg';
-    params.value = JSON.stringify(tgContent);
+    var input = document.createElement("input");
+    input.type = 'hidden';
+    input.name = 'tg';
+    input.value = JSON.stringify(tgContent);
 
 
-    form.appendChild(params);
+    form.appendChild(input);
     form.submit();
 }
 
@@ -142,6 +143,7 @@ document.getElementById('tgSelector').onchange = handleFile;
 //todo find out why $('tgSelector') doesn't work
 //todo need to disable and enable 导入按钮
 //todo find out how to clear modal dialogue content.
+
 /*
 function post() {
     var temp = document.createElement("form");
