@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 
 var TransactionGroupSchema = new Schema(
 {
+    owner : String,
     fileName : String,
     name : String,
     broker : String,
@@ -65,6 +66,13 @@ TransactionGroupSchema.statics = {
             .sort('meta.createAt')
             .exec(cb)
     },
+    fetchByOwner: function(owner, cb) {
+        return this
+            .find({owner:owner})
+            .sort('meta.createAt')
+            .exec(cb)
+    },
+
     findById: function(id, cb) {
         return this
             .findOne({_id: id})

@@ -122,7 +122,7 @@ function handleFile(e) {
 
     document.getElementById('tgFileName').value = f.name;
 
-    tgContent.name = $('tgName').value;
+    tgContent.name = document.getElementById('tgName').value;
 }
 
 function submit() {

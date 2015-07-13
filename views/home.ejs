@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('head') %>
+
+    <style type='text/css'>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <%- include('navbar') %>
+
+<div class='container' id="wrapper">
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Dashboard</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <% for (var i in tgs) { %>
+
+            <div class="col-md-4">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-9 ">
+                                <div class="huge">
+                                    <p style="overflow:hidden;text-overflow:ellipsis;height:16px">
+                                        <%=tgs[i].fileName%>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-xs-3 text-right">
+                                <div class="huge"><%=tgs[i].pl%></div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <%}%>
+
+            <div class="col-md-4" style="height:161px" >
+                <button type="button" class="btn btn-default btn-lg btn-block" style="height:141px"
+                        data-toggle="modal" data-target="#newTG" data-backdrop="static">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="newTG" tabindex="-1" role="dialog" aria-labelledby="newTGLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="newTGLabel">导入新的交易组</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal" action="/TG" method="post" id='newTGForm'>
+                        <div class="form-group">
+                            <label for="tgName" class="col-sm-3 control-label">标识 ： </label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="tgName" placeholder="取个名字">
+                            </div>
+                        </div>
+
+                        <!--
+                                                    <div class="form-group">
+                                                        <label for="tgSelector" class="col-sm-3 control-label">标识 ： </label>
+                                                        <div class="col-sm-9">
+                                                            <input type="file" class="form-control" id="tgSelector" placeholder=""
+                                                                    onchange="handleFile(this)">
+                                                        </div>
+                                                    </div>
+                        -->
+
+                        <div class="form-group">
+                            <input type="file" class="form-control" id="tgSelector" style="display:none">
+                            <a class="btn col-sm-3 control-label"
+                               onclick="$('input[id=tgSelector]').click();">点击选择</a>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="tgFileName">
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="submit()">导入</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Theme JavaScript -->
+
+<script src="./libs/js-xlsx/dist/xlsx.core.min.js"></script>
+
+<script src="./javascripts/fxcm_xlsx_parser.js"></script>
+
+
+</body>
+
+</html>
