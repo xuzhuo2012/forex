@@ -42,7 +42,7 @@ exports.signup = function(req, res) {
         }
 
         req.session.user = _user;
-        res.redirect('/');
+        res.redirect('/home');
       });
     }
   });
@@ -73,10 +73,11 @@ exports.signin = function(req, res) {
       if (isMatch) {
         req.session.user = _user;
         var redirectURL = req.cookies.preURL || '';
+        res.clearCookie("preURL");
         if (redirectURL) {
           return res.redirect(redirectURL);
         } else {
-          return res.redirect('/');
+          return res.redirect('/home');
         }
       }
       else {

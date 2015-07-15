@@ -1,11 +1,11 @@
 {
-  "name": "startbootstrap-sb-admin-2",
-  "version": "1.0.7",
-  "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2/",
+  "name": "forex",
+  "version": "0.0.1",
+  "homepage": "",
   "authors": [
-    "David Miller"
+    "Mystzhm"
   ],
-  "description": "A free, open source, Bootstrap admin theme created by Start Bootstrap",
+  "description": "record your trade life",
   "keywords": [
     "bootstrap",
     "theme"
@@ -37,6 +37,7 @@
     "datatables-responsive": "~1.0.3",
     "bootstrap-social": "~4.8.0",
     "flot.tooltip": "~0.8.4",
-    "js-xlsx": "~0.8.0"
+    "js-xlsx": "~0.8.0",
+    "echarts": "~2.2.5"
   }
 }

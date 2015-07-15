@@ -41,19 +41,3 @@ exports.showHome = function(req, res) {
     });
 
 };
-exports.upload = function(req, res, next) {
-    console.log("Request handler 'upload' was called.");
-    var _tg = JSON.parse(req.body.tg);
-    console.log(_tg.fileName);
-    _tg.owner = req.session.user.username;
-    var tg = new TransactionGroup(_tg);
-
-    tg.save(function(err) {
-        console.log('enter save');
-        if (err) {
-            console.log(err)
-        }
-
-        res.redirect('/home');
-    })
-};

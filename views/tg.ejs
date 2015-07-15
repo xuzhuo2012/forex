@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <%- include('head') %>
+
+    <style type='text/css'>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<%- include('navbar') %>
+
+<% if (!tg) {%>
+<h2>交易组不存在或您无权访问</h2>
+<% } else {%>
+
+<div class="row">
+
+    <samp><%=tg.analysis.trend[0].accumulate%></samp>
+
+    <div class='col-md-4'id="first" style="height:400px;"></div>
+    <div class='col-md-4'id="second" style="height:400px;"></div>
+    <div class='col-md-4'id="third" style="height:400px;"></div>
+    <div class='col-md-4'id="forth" style="height:400px;"></div>
+    <div class='col-md-4'id="fifth" style="height:400px;"></div>
+
+</div>
+
+
+<script src="/libs/echarts/build/dist/echarts.js"></script>
+<script type="text/javascript">
+    require.config({
+        paths: {
+            echarts: '/libs/echarts/build/dist',
+            math : '/javascripts/math',
+            math2 : '/javascripts/math2'
+        }
+    });
+
+    require(
+            [
+                'math',
+                'math2'
+            ],
+            function(math,math2) {
+//                alert(math.add(1,2));
+//                alert(math2.minor(11111,23));
+            }
+    )
+
+    require(
+            [
+                'echarts',
+                'echarts/chart/line',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+                'echarts/chart/bar',
+                    'math'
+            ],
+            function (ec,a,b,math) {
+                var myChart = ec.init(document.getElementById('first'));
+                var option = {
+                    tooltip: {
+                        show: true
+                    },
+                    legend: {
+                        data:['销量']
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            "name":"销量",
+                            "type":"line",
+                            "data":[5, 20, 40, 10, 10, 20]
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+    );
+
+
+    require(
+            [
+                'echarts',
+                'echarts/chart/line',   // 按需加载所需图表，如需动态类型切换功能，别忘了同时加载相应图表
+                'echarts/chart/bar'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('second'));
+                var option = {
+                    tooltip: {
+                        show: true
+                    },
+                    legend: {
+                        data:['销量']
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            type : 'value'
+                        }
+                    ],
+                    series : [
+                        {
+                            "name":"销量",
+                            "type":"bar",
+                            "data":[5, 20, 40, 10, 10, 20]
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+    );
+</script>
+
+<%}%>
+</body>
+</html>

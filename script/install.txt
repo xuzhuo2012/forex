@@ -1,0 +1,12 @@
+1. 下载安装Node
+2. 命令行执行npm install bower -g
+3. 下载安装mongodb到c:/mongodb目录
+    3.1 配置mongodb
+        3.1.1 新建c:/mongodb/data和c:/mongodb/logs目录
+        3.1.2 命令行执行 mongod --dbpath=c:\mongodb\data --logpath=c:\mongodb\logs\mongodb.log --service将其注册为服务自启动
+4. 从git 上拉取代码
+5. 进入工程目录
+    5.1 执行 npm install
+    5.2 执行 bower install
+    5.3 执行 npm start
+6. 访问http://localhost成功

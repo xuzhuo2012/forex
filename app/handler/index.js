@@ -9,6 +9,6 @@ exports.showIndex = function(req, res) {
     res.render('index', {
         title: '云单 --- 分析保存历史交易',
         user: req.session.user
-    })
+    });
 };
 

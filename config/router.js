@@ -4,6 +4,7 @@ var router = express.Router();
 var home = require("../app/handler/home");
 var user = require("../app/handler/user");
 var index = require("../app/handler/index");
+var tg = require("../app/handler/transaction_group");
 
 
 
@@ -12,12 +13,12 @@ router.get('/', index.showIndex);
 
 //home
 router.get('/home', user.signinRequired, home.showHome);
-router.post('/upload', user.signinRequired, home.upload);
 
 
 /* GET home page. */
-router.get('/pages/*', home.showPage);
-router.post('/TG', home.upload);
+router.get('/tg/:id', tg.showTG);
+router.post('/tg', user.signinRequired, tg.uploadTG);
+router.get('/pages/*', user.signinRequired, home.showPage);
 
 //router.get('/service/*', service.)
 

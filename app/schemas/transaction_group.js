@@ -3,6 +3,8 @@
  */
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var ObjectId = Schema.Types.ObjectId;
+
 
 var TransactionGroupSchema = new Schema(
 {
@@ -35,6 +37,15 @@ var TransactionGroupSchema = new Schema(
         grossPL : Number
     }],
 
+    analysis:{
+        trend : [
+            {
+                id : ObjectId,
+                accumulate : Number
+            }
+        ]
+    },
+
     meta: {
         createAt: {
             type: Date,
@@ -47,14 +58,19 @@ var TransactionGroupSchema = new Schema(
     }
 });
 
-// var ObjectId = mongoose.Schema.Types.ObjectId
 TransactionGroupSchema.pre('save', function(next) {
     if (this.isNew) {
-        this.meta.createAt = this.meta.updateAt = Date.now()
+        this.meta.createAt = this.meta.updateAt = Date.now();
     }
     else {
-        this.meta.updateAt = Date.now()
+        this.meta.updateAt = Date.now();
     }
+
+    next();
+});
+
+TransactionGroupSchema.pre('save', function(next) {
+    console.log('可以重复叠加前置函数...');
 
     next();
 });
@@ -66,6 +82,7 @@ TransactionGroupSchema.statics = {
             .sort('meta.createAt')
             .exec(cb)
     },
+
     fetchByOwner: function(owner, cb) {
         return this
             .find({owner:owner})

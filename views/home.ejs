@@ -3,12 +3,6 @@
 
 <head>
     <%- include('head') %>
-
-    <style type='text/css'>
-        body {
-            padding-top: 50px;
-        }
-    </style>
 </head>
 
 <body>
@@ -51,9 +45,9 @@
                         <div class="panel-body" style="padding:5px;height:120px">
                             <img class="img-responsive" style="height:100%" src="./images/trend.gif" alt=""/>
                         </div>
-                        <a href="#">
+                        <a href="/tg/<%=tgs[i]._id%>">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left">查看详情</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -88,7 +82,7 @@
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <form class="form-horizontal" action="/TG" method="post" id='newTGForm'>
+                    <form class="form-horizontal" action="/tg" method="post" id='newTGForm'>
                         <div class="form-group">
                             <label for="tgName" class="col-sm-3 control-label">标识 ： </label>
                             <div class="col-sm-9">
