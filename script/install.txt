@@ -4,7 +4,7 @@
     3.1 配置mongodb
         3.1.1 新建c:/mongodb/data和c:/mongodb/logs目录
         3.1.2 命令行执行 mongod --dbpath=c:\mongodb\data --logpath=c:\mongodb\logs\mongodb.log --service将其注册为服务自启动
-4. 从git 上拉取代码
+4. 从git 上拉取代码 git clone git@github.com:mystzhm/forex.git
 5. 进入工程目录
     5.1 执行 npm install
     5.2 执行 bower install
